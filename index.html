@@ -540,6 +540,7 @@ oninput="renderProspects()">
 <th>Oldest</th>
 <th>Score</th>
 <th>Next Call</th>
+<th>Actions</th>
 </tr>
 
 </thead>
@@ -767,6 +768,21 @@ document.getElementById("newPhone").value,
 
 email:
 document.getElementById("newEmail").value,
+    contacts: [
+    {
+        name:
+        document.getElementById("newContact").value,
+
+        title:
+        document.getElementById("newTitle").value,
+
+        phone:
+        document.getElementById("newPhone").value,
+
+        email:
+        document.getElementById("newEmail").value
+    }
+],
 
 positions:
 parseInt(document.getElementById("newPositions").value) || 0,
