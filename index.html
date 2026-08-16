@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Asia Sales Dialer</title>
 
 <style>
+
+/* =========================================================
+   1. BASIC DESIGN
+========================================================= */
+
 * {
     box-sizing: border-box;
 }
@@ -20,6 +26,8 @@
     --light: #f5f6f2;
     --white: #ffffff;
     --border: #e1e4da;
+    --red: #a83232;
+    --blue: #315c91;
 }
 
 body {
@@ -34,11 +42,18 @@ button {
     font-family: inherit;
 }
 
+button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
 .app {
     min-height: 100vh;
 }
 
-/* HEADER */
+/* =========================================================
+   2. HEADER
+========================================================= */
 
 .topbar {
     background: var(--black);
@@ -52,7 +67,6 @@ button {
 .logo {
     font-size: 21px;
     font-weight: 800;
-    letter-spacing: .3px;
 }
 
 .logo span {
@@ -64,10 +78,12 @@ button {
     color: #d1d5db;
 }
 
-/* MAIN */
+/* =========================================================
+   3. MAIN LAYOUT
+========================================================= */
 
 .container {
-    max-width: 1250px;
+    max-width: 1350px;
     margin: auto;
     padding: 25px;
 }
@@ -90,12 +106,14 @@ button {
     color: var(--gray);
 }
 
-/* BUTTONS */
+/* =========================================================
+   4. BUTTONS
+========================================================= */
 
 .btn {
     border: 0;
     border-radius: 8px;
-    padding: 11px 16px;
+    padding: 10px 15px;
     font-weight: 700;
 }
 
@@ -120,16 +138,28 @@ button {
 }
 
 .btn-danger {
-    background: #9f3030;
+    background: var(--red);
     color: white;
 }
 
-/* DASHBOARD */
+.btn-blue {
+    background: var(--blue);
+    color: white;
+}
+
+.btn-small {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+
+/* =========================================================
+   5. DASHBOARD KPIs
+========================================================= */
 
 .kpis {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
     margin-bottom: 22px;
 }
 
@@ -137,21 +167,23 @@ button {
     background: white;
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 18px;
+    padding: 16px;
 }
 
 .kpi-label {
     color: var(--gray);
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .kpi-value {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 800;
     margin-top: 7px;
 }
 
-/* PANELS */
+/* =========================================================
+   6. PANELS
+========================================================= */
 
 .panel {
     background: white;
@@ -165,19 +197,30 @@ button {
     margin-top: 0;
 }
 
-/* SEARCH */
+.panel h3 {
+    margin-top: 0;
+}
 
-.search-row {
+/* =========================================================
+   7. SEARCH / TOOLBAR
+========================================================= */
+
+.toolbar {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
     margin-bottom: 15px;
 }
 
-.search-row input {
+.toolbar input,
+.toolbar select {
     flex: 1;
+    min-width: 180px;
 }
 
-/* FORM */
+/* =========================================================
+   8. FORMS
+========================================================= */
 
 .form-grid {
     display: grid;
@@ -216,7 +259,9 @@ textarea {
     resize: vertical;
 }
 
-/* PROSPECT TABLE */
+/* =========================================================
+   9. TABLE
+========================================================= */
 
 .table-wrap {
     overflow-x: auto;
@@ -236,7 +281,7 @@ th {
 }
 
 td {
-    padding: 14px 8px;
+    padding: 13px 8px;
     border-bottom: 1px solid #edf0e9;
 }
 
@@ -249,6 +294,10 @@ td {
 .company-link:hover {
     text-decoration: underline;
 }
+
+/* =========================================================
+   10. BADGES
+========================================================= */
 
 .badge {
     display: inline-block;
@@ -273,7 +322,14 @@ td {
     color: #555555;
 }
 
-/* ACCOUNT */
+.badge-red {
+    background: #f7dddd;
+    color: #8c2828;
+}
+
+/* =========================================================
+   11. ACCOUNT HEADER
+========================================================= */
 
 .account-header {
     display: flex;
@@ -299,7 +355,36 @@ td {
     flex-wrap: wrap;
 }
 
-/* VALUE VAULT */
+/* =========================================================
+   12. NEXT BEST ACTION
+========================================================= */
+
+.next-action {
+    background: #111111;
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.next-action h2 {
+    color: #a7b77a;
+    margin-top: 0;
+}
+
+.next-action-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.next-action p {
+    color: #e5e7eb;
+}
+
+/* =========================================================
+   13. VALUE VAULT
+========================================================= */
 
 .value-vault {
     background: var(--olive-light);
@@ -315,7 +400,7 @@ td {
 
 .vault-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
 
@@ -335,7 +420,47 @@ td {
     font-size: 18px;
 }
 
-/* CALL WORKSPACE */
+/* =========================================================
+   14. CONTACT CARDS
+========================================================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.contact-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 15px;
+    background: #fafbf8;
+}
+
+.contact-card.primary-contact {
+    border-left: 4px solid var(--olive);
+}
+
+.contact-name {
+    font-weight: 800;
+    font-size: 17px;
+}
+
+.contact-title {
+    color: var(--gray);
+    margin: 4px 0 10px;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+/* =========================================================
+   15. CALL WORKSPACE
+========================================================= */
 
 .call-workspace {
     border-left: 5px solid var(--olive);
@@ -360,13 +485,30 @@ td {
     margin-top: 0;
 }
 
-/* OBJECTIONS */
+/* =========================================================
+   16. OBJECTIONS
+========================================================= */
+
+.objection-categories {
+    display: grid;
+    gap: 15px;
+}
+
+.objection-category {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.objection-category h4 {
+    margin: 0 0 10px;
+    color: var(--olive-dark);
+}
 
 .objection-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 15px;
 }
 
 .objection-response {
@@ -374,6 +516,7 @@ td {
     border: 1px solid #d6dec1;
     border-radius: 10px;
     padding: 15px;
+    margin-top: 15px;
     display: none;
 }
 
@@ -389,7 +532,9 @@ td {
     color: var(--olive-dark);
 }
 
-/* HISTORY */
+/* =========================================================
+   17. HISTORY
+========================================================= */
 
 .history-item {
     border-left: 3px solid var(--olive);
@@ -402,16 +547,31 @@ td {
     color: var(--gray);
 }
 
-/* FOLLOW-UP */
+/* =========================================================
+   18. EMAIL TEMPLATES
+========================================================= */
 
-.followup {
-    background: #f7f8f4;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 15px;
+.template-card {
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 13px;
+    margin-bottom: 10px;
 }
 
-/* EMPTY */
+.template-card strong {
+    color: var(--olive-dark);
+}
+
+.template-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   19. EMPTY STATE
+========================================================= */
 
 .empty {
     text-align: center;
@@ -419,9 +579,54 @@ td {
     padding: 30px;
 }
 
-/* MOBILE */
+/* =========================================================
+   20. MODAL
+========================================================= */
 
-@media(max-width:800px) {
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    width: 100%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 14px;
+    padding: 22px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* =========================================================
+   21. MOBILE
+========================================================= */
+
+@media(max-width:1000px) {
+
+    .kpis {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .vault-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:700px) {
 
     .container {
         padding: 15px;
@@ -439,7 +644,8 @@ td {
         grid-column: auto;
     }
 
-    .vault-grid {
+    .vault-grid,
+    .contact-grid {
         grid-template-columns: 1fr;
     }
 
@@ -449,11 +655,13 @@ td {
         align-items: stretch;
     }
 
-    .search-row {
+    .toolbar {
         flex-direction: column;
     }
 }
+
 </style>
+
 </head>
 
 <body>
@@ -461,28 +669,54 @@ td {
 <div class="app">
 
 <header class="topbar">
-    <div class="logo">Asia <span>Sales Dialer</span></div>
-    <div class="topbar-right">Sales Command Center</div>
+
+    <div class="logo">
+        Asia <span>Sales Dialer</span>
+    </div>
+
+    <div class="topbar-right">
+        Staffing Sales Command Center
+    </div>
+
 </header>
+
 
 <main class="container">
 
-<!-- DASHBOARD -->
+
+<!-- =======================================================
+     DASHBOARD
+======================================================== -->
 
 <section id="dashboard">
 
 <div class="page-header">
 
 <div>
-<h1>Prospect Command Center</h1>
-<p>Manage your pipeline, calls, follow-ups and account intelligence.</p>
+<h1>Sales Command Center</h1>
+
+<p>
+Find businesses, manage prospects, make calls and close staffing opportunities.
+</p>
+
 </div>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap;">
+
+<button class="btn btn-light" onclick="openImportModal()">
+📥 Import
+</button>
 
 <button class="btn btn-primary" onclick="showAddProspect()">
 + Add Prospect
 </button>
 
 </div>
+
+</div>
+
+
+<!-- KPIs -->
 
 <div class="kpis">
 
@@ -497,8 +731,8 @@ td {
 </div>
 
 <div class="kpi">
-<div class="kpi-label">Follow-Ups</div>
-<div class="kpi-value" id="kpiFollowups">0</div>
+<div class="kpi-label">Connected</div>
+<div class="kpi-value" id="kpiConnected">0</div>
 </div>
 
 <div class="kpi">
@@ -506,25 +740,71 @@ td {
 <div class="kpi-value" id="kpiMeetings">0</div>
 </div>
 
+<div class="kpi">
+<div class="kpi-label">Follow-Ups</div>
+<div class="kpi-value" id="kpiFollowups">0</div>
 </div>
+
+<div class="kpi">
+<div class="kpi-label">High Opportunities</div>
+<div class="kpi-value" id="kpiHigh">0</div>
+</div>
+
+</div>
+
+
+<!-- PROSPECT LIST -->
 
 <div class="panel">
 
 <div class="page-header">
+
 <div>
 <h2>Prospect List</h2>
-<p>Your active accounts and staffing opportunities.</p>
-</div>
+
+<p>
+Businesses that may need staffing services.
+</p>
+
 </div>
 
-<div class="search-row">
+</div>
+
+
+<div class="toolbar">
 
 <input
 id="prospectSearch"
-placeholder="Search company, contact or industry..."
-oninput="renderProspects()">
+placeholder="Search company, contact, industry or location..."
+oninput="renderProspects()"
+>
+
+<select id="industryFilter" onchange="renderProspects()">
+
+<option value="">All Industries</option>
+<option>Construction</option>
+<option>Warehouse</option>
+<option>Manufacturing</option>
+<option>Logistics</option>
+<option>Healthcare</option>
+<option>Hospitality</option>
+<option>Retail</option>
+<option>Other</option>
+
+</select>
+
+
+<select id="scoreFilter" onchange="renderProspects()">
+
+<option value="">All Opportunities</option>
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="low">Low</option>
+
+</select>
 
 </div>
+
 
 <div class="table-wrap">
 
@@ -533,14 +813,15 @@ oninput="renderProspects()">
 <thead>
 
 <tr>
+
 <th>Company</th>
 <th>Contact</th>
 <th>Industry</th>
 <th>Open Jobs</th>
 <th>Oldest</th>
 <th>Score</th>
-<th>Next Call</th>
-<th>Actions</th>
+<th>Next Action</th>
+
 </tr>
 
 </thead>
@@ -556,15 +837,23 @@ oninput="renderProspects()">
 </section>
 
 
-<!-- ADD PROSPECT -->
+
+<!-- =======================================================
+     ADD PROSPECT
+======================================================== -->
 
 <section id="addProspect" style="display:none;">
 
 <div class="page-header">
 
 <div>
+
 <h1>Add Prospect</h1>
-<p>Create a new account in your sales pipeline.</p>
+
+<p>
+Create a business account in your staffing sales pipeline.
+</p>
+
 </div>
 
 <button class="btn btn-light" onclick="showDashboard()">
@@ -573,79 +862,112 @@ oninput="renderProspects()">
 
 </div>
 
+
 <div class="panel">
 
 <div class="form-grid">
 
 <div class="form-group">
+
 <label>Company Name</label>
-<input id="newCompany" placeholder="ABC Construction">
+
+<input
+id="newCompany"
+placeholder="ABC Construction"
+>
+
 </div>
 
+
 <div class="form-group">
+
 <label>Industry</label>
+
 <select id="newIndustry">
+
 <option>Construction</option>
 <option>Warehouse</option>
 <option>Manufacturing</option>
 <option>Logistics</option>
 <option>Healthcare</option>
+<option>Hospitality</option>
+<option>Retail</option>
 <option>Other</option>
+
 </select>
+
 </div>
 
+
 <div class="form-group">
+
 <label>Location</label>
-<input id="newLocation" placeholder="Atlanta, GA">
+
+<input
+id="newLocation"
+placeholder="Atlanta, GA"
+>
+
 </div>
 
-<div class="form-group">
-<label>Contact Name</label>
-<input id="newContact" placeholder="Jane Smith">
-</div>
 
 <div class="form-group">
-<label>Contact Title</label>
-<input id="newTitle" placeholder="HR Director">
-</div>
 
-<div class="form-group">
-<label>Business Phone</label>
-<input id="newPhone" placeholder="(404) 555-1234">
-</div>
-
-<div class="form-group">
-<label>Email</label>
-<input id="newEmail" placeholder="jane@company.com">
-</div>
-
-<div class="form-group">
 <label>Open Positions</label>
-<input id="newPositions" type="number" placeholder="8">
+
+<input
+id="newPositions"
+type="number"
+placeholder="8"
+>
+
 </div>
 
-<div class="form-group">
-<label>Oldest Position Open (Days)</label>
-<input id="newDays" type="number" placeholder="74">
-</div>
 
 <div class="form-group">
+
+<label>Oldest Position Open — Days</label>
+
+<input
+id="newDays"
+type="number"
+placeholder="74"
+>
+
+</div>
+
+
+<div class="form-group">
+
 <label>Hiring Signal</label>
+
 <select id="newSignal">
+
 <option>Multiple Openings</option>
 <option>Hard-to-Fill Position</option>
 <option>Expansion</option>
 <option>High Turnover</option>
+<option>Urgent Hiring</option>
 <option>Unknown</option>
+
 </select>
+
 </div>
+
 
 <div class="form-group full">
+
 <label>Account Notes</label>
-<textarea id="newNotes" placeholder="Anything important about this prospect..."></textarea>
+
+<textarea
+id="newNotes"
+placeholder="Hiring information, business pain points, research, etc."
+></textarea>
+
 </div>
 
 </div>
+
 
 <br>
 
@@ -658,7 +980,10 @@ Create Prospect
 </section>
 
 
-<!-- ACCOUNT -->
+
+<!-- =======================================================
+     ACCOUNT
+======================================================== -->
 
 <section id="account" style="display:none;">
 
@@ -674,26 +999,308 @@ Create Prospect
 
 </section>
 
+
 </main>
+
+
+<!-- =======================================================
+     MODAL
+======================================================== -->
+
+<div
+id="modalOverlay"
+class="modal-overlay"
+onclick="closeModal(event)"
+>
+
+<div
+class="modal"
+onclick="event.stopPropagation()"
+>
+
+<div id="modalContent"></div>
+
+</div>
 
 </div>
 
 
 <script>
 
-/* ==============================
-   DATA
-============================== */
+/* =========================================================
+   22. DATA STORAGE
+========================================================= */
 
 let prospects =
-JSON.parse(localStorage.getItem("asiaSalesDialerProspects")) || [];
+JSON.parse(localStorage.getItem("asiaSalesDialerProspectsV2")) || [];
+
+let customObjections =
+JSON.parse(localStorage.getItem("asiaSalesDialerCustomObjections")) || [];
+
+let emailTemplates =
+JSON.parse(localStorage.getItem("asiaSalesDialerEmailTemplates")) || [];
 
 let currentAccountId = null;
 
+let selectedOutcome = "Connected";
 
-/* ==============================
-   NAVIGATION
-============================== */
+
+/* =========================================================
+   23. BUILT-IN OBJECTIONS
+========================================================= */
+
+const objectionLibrary = {
+
+"Common": [
+
+{
+id:"already",
+name:"Already Have Staffing Company",
+responses:[
+"I completely understand. A lot of companies already have a staffing partner. Where I usually find an opportunity is when there are positions that aren't getting filled quickly enough. Are there any roles your current provider is struggling with?",
+"That makes sense. I'm not looking to replace a relationship that's working. Are you completely covered on your harder-to-fill positions right now?",
+"Understood. If your current provider could handle every opening and every shift you needed, what would you say is the biggest challenge you're still dealing with?"
+]
+},
+
+{
+id:"busy",
+name:"Too Busy",
+responses:[
+"I understand. Let me make this quick. What is the hardest position you're trying to fill right now?",
+"I'll keep it brief. If I could identify one staffing gap we're equipped to solve, would it be worth a two-minute conversation?",
+"No problem. Would it make more sense for me to call later today, or is there a better day for a quick conversation?"
+]
+},
+
+{
+id:"budget",
+name:"No Budget",
+responses:[
+"I understand. Is the issue that there is no staffing budget available, or that the current hiring need hasn't justified bringing in another resource?",
+"That makes sense. If an open position is sitting unfilled, how are you currently absorbing the cost of that vacancy?",
+"If we could solve a difficult-to-fill position without creating unnecessary cost, would you be open to evaluating it?"
+]
+},
+
+{
+id:"send",
+name:"Send Information",
+responses:[
+"Absolutely. I'll send something over. So I make it relevant, what type of positions are you hiring for most frequently?",
+"Happy to. Before I send it, what would you want the information to help you evaluate?",
+"Absolutely. I'll send that over. When would be a good time for me to follow up after you've had a chance to review it?"
+]
+},
+
+{
+id:"notinterested",
+name:"Not Interested",
+responses:[
+"I understand. Before I let you go, may I ask what would need to change for staffing support to become worth considering?",
+"Fair enough. Is that because you're fully staffed right now, or because you're satisfied with your current recruiting process?",
+"Understood. Would it be alright if I asked one quick question so I don't follow up unnecessarily?"
+]
+}
+
+],
+
+"Hiring": [
+
+{
+id:"internal",
+name:"We Only Hire Internally",
+responses:[
+"I completely understand. When internal recruiting isn't able to keep up with demand, do you ever use an outside staffing partner for the harder-to-fill positions?",
+"That makes sense. Are there any positions where your internal recruiting team has difficulty finding qualified candidates quickly?",
+"If an urgent position needed to be filled faster than your internal process could handle, what would your backup plan normally be?"
+]
+},
+
+{
+id:"nostaffing",
+name:"We Don't Use Staffing Agencies",
+responses:[
+"I understand. Is that because your internal recruiting process has been able to handle all of your hiring needs?",
+"That makes sense. What usually happens when you have a position that becomes difficult or urgent to fill?",
+"Understood. Would you be open to keeping a staffing partner as a resource for positions your internal team has difficulty filling?"
+]
+},
+
+{
+id:"notnow",
+name:"We're Not Hiring Right Now",
+responses:[
+"Understood. When hiring does pick back up, what types of positions do you typically hire for?",
+"That makes sense. Would it be helpful if I checked back when your hiring needs increase?",
+"Understood. Are there any roles you anticipate needing to fill over the next few months?"
+]
+},
+
+{
+id:"fullystaffed",
+name:"We're Fully Staffed",
+responses:[
+"That's great. When you do have turnover or unexpected openings, how quickly do you normally need to replace someone?",
+"That's good to hear. Do you normally experience seasonal hiring increases?",
+"Understood. Would it make sense to have a staffing resource available for unexpected hiring needs?"
+]
+},
+
+{
+id:"interviewing",
+name:"We're Already Interviewing Candidates",
+responses:[
+"That's great. Are you seeing enough qualified candidates to fill all of the openings?",
+"If some of those candidates don't work out, do you have a backup source for the position?",
+"How long are you expecting the hiring process to take?"
+]
+}
+
+],
+
+"Decision Maker": [
+
+{
+id:"hr",
+name:"Talk To HR",
+responses:[
+"Absolutely. Who would be the best person in HR for me to speak with?",
+"Sure. Would you mind giving me their name so I can make sure I'm reaching the right person?",
+"Thank you. Is there anything specific you recommend I mention when I reach out?"
+]
+},
+
+{
+id:"corporate",
+name:"Need To Talk To Corporate",
+responses:[
+"Absolutely. Who at corporate normally handles staffing decisions?",
+"Understood. Is there someone locally I should speak with first, or does everything go directly through corporate?",
+"Would you be comfortable connecting me with the person who manages that decision?"
+]
+},
+
+{
+id:"approval",
+name:"Need Approval",
+responses:[
+"Of course. What information would your decision-maker need in order to evaluate staffing support?",
+"That makes sense. Would it be helpful if I put together a brief overview you can share with them?",
+"Who else would normally be involved in making that decision?"
+]
+},
+
+{
+id:"boss",
+name:"I Need To Talk To My Boss",
+responses:[
+"Absolutely. What would your boss want to know before considering a staffing partner?",
+"Of course. Would it make sense to include them in a short conversation so I can answer any questions directly?",
+"That's completely understandable. When would be a good time for me to follow up after you've spoken with them?"
+]
+}
+
+],
+
+"Pricing": [
+
+{
+id:"rates",
+name:"Your Rates Are Too High",
+responses:[
+"I understand. Is the concern the staffing rate itself, or the overall cost compared with leaving the position open?",
+"That's fair. Besides price, what would you need to see from a staffing partner to make the investment worthwhile?",
+"I understand. If we could demonstrate a strong return by reducing time-to-fill and vacancy costs, would you be open to evaluating it?"
+]
+},
+
+{
+id:"competitor",
+name:"Competitor Is Cheaper",
+responses:[
+"I understand. Besides price, how has that provider performed when it comes to filling your harder-to-staff positions?",
+"That makes sense. If another provider is less expensive but can't consistently fill the positions you need, how does that affect the decision?",
+"Understood. What would you need to see from us to justify considering another staffing partner?"
+]
+},
+
+{
+id:"contract",
+name:"Don't Want A Contract",
+responses:[
+"I understand. Is the concern being locked into a long-term commitment?",
+"That's completely understandable. Would you be open to discussing the staffing need first without making any commitment?",
+"Understood. What type of arrangement would make you more comfortable?"
+]
+}
+
+],
+
+"Trust": [
+
+{
+id:"badexperience",
+name:"Bad Experience With Staffing Agencies",
+responses:[
+"I understand. What specifically went wrong with the previous provider?",
+"That makes sense. What would a staffing partner need to do differently for you to consider using one again?",
+"I appreciate you sharing that. If we could address that specific issue, would you be open to a conversation?"
+]
+},
+
+{
+id:"currentprovider",
+name:"Happy With Current Provider",
+responses:[
+"That's good to hear. Are there any types of positions your current provider doesn't specialize in?",
+"Understood. I'm not looking to disrupt a relationship that's working. Would you consider having a backup resource for overflow or hard-to-fill roles?",
+"That's great. How quickly is your current provider typically able to fill your most difficult positions?"
+]
+},
+
+{
+id:"qualified",
+name:"How Do I Know You'll Send Qualified Candidates?",
+responses:[
+"That's a fair question. What qualifications are most important for the positions you're hiring for?",
+"Absolutely. The better we understand the role and your requirements, the more targeted we can make the candidate search.",
+"That's an important consideration. What has been the biggest challenge with candidate quality from previous providers?"
+]
+}
+
+],
+
+"Timing": [
+
+{
+id:"nextmonth",
+name:"Call Me Next Month",
+responses:[
+"Absolutely. Before I let you go, is there a particular hiring need you expect to have next month?",
+"Of course. What would make next month a better time to revisit this?",
+"Absolutely. What day next month would work best for me to reconnect?"
+]
+},
+
+{
+id:"notready",
+name:"We're Not Ready Yet",
+responses:[
+"Understood. What needs to happen before you would be ready to bring in staffing support?",
+"That makes sense. Is the timing issue related to budget, hiring volume, or something else?",
+"Absolutely. Would it be helpful for me to check in closer to when that need develops?"
+]
+}
+
+]
+
+};
+
+
+/* =========================================================
+   24. NAVIGATION
+========================================================= */
 
 function showDashboard() {
 
@@ -729,9 +1336,9 @@ renderAccount();
 }
 
 
-/* ==============================
-   PROSPECT CREATION
-============================== */
+/* =========================================================
+   25. CREATE PROSPECT
+========================================================= */
 
 function createProspect() {
 
@@ -741,9 +1348,11 @@ document.getElementById("newCompany").value.trim();
 if(!company) {
 
 alert("Company name is required.");
+
 return;
 
 }
+
 
 let prospect = {
 
@@ -757,33 +1366,6 @@ document.getElementById("newIndustry").value,
 location:
 document.getElementById("newLocation").value,
 
-contact:
-document.getElementById("newContact").value,
-
-title:
-document.getElementById("newTitle").value,
-
-phone:
-document.getElementById("newPhone").value,
-
-email:
-document.getElementById("newEmail").value,
-    contacts: [
-    {
-        name:
-        document.getElementById("newContact").value,
-
-        title:
-        document.getElementById("newTitle").value,
-
-        phone:
-        document.getElementById("newPhone").value,
-
-        email:
-        document.getElementById("newEmail").value
-    }
-],
-
 positions:
 parseInt(document.getElementById("newPositions").value) || 0,
 
@@ -796,13 +1378,21 @@ document.getElementById("newSignal").value,
 notes:
 document.getElementById("newNotes").value,
 
+contacts: [],
+
 calls: [],
 
 followups: [],
 
-objectionNotes: []
+nextAction: {
+title:"Make first discovery call",
+reason:"This is a new prospect.",
+focus:"Ask about their hardest-to-fill position.",
+date:""
+}
 
 };
+
 
 prospects.push(prospect);
 
@@ -813,29 +1403,40 @@ showAccount(prospect.id);
 }
 
 
-/* ==============================
-   STORAGE
-============================== */
+/* =========================================================
+   26. STORAGE
+========================================================= */
 
 function saveData() {
 
 localStorage.setItem(
-"asiaSalesDialerProspects",
+"asiaSalesDialerProspectsV2",
 JSON.stringify(prospects)
+);
+
+localStorage.setItem(
+"asiaSalesDialerCustomObjections",
+JSON.stringify(customObjections)
+);
+
+localStorage.setItem(
+"asiaSalesDialerEmailTemplates",
+JSON.stringify(emailTemplates)
 );
 
 }
 
 
-/* ==============================
-   SCORE
-============================== */
+/* =========================================================
+   27. SCORE
+========================================================= */
 
 function getScore(p) {
 
 let score = 20;
 
-if(p.positions >= 5) score += 25;
+if(p.positions >= 10) score += 30;
+else if(p.positions >= 5) score += 25;
 else if(p.positions >= 3) score += 15;
 
 if(p.days >= 90) score += 25;
@@ -845,6 +1446,7 @@ else if(p.days >= 30) score += 15;
 if(p.signal === "Expansion") score += 10;
 if(p.signal === "Hard-to-Fill Position") score += 10;
 if(p.signal === "High Turnover") score += 10;
+if(p.signal === "Urgent Hiring") score += 15;
 
 return Math.min(score,100);
 
@@ -864,9 +1466,9 @@ return '<span class="badge badge-low">LOW</span>';
 }
 
 
-/* ==============================
-   PROSPECT TABLE
-============================== */
+/* =========================================================
+   28. PROSPECT TABLE
+========================================================= */
 
 function renderProspects() {
 
@@ -877,15 +1479,41 @@ let search =
 (document.getElementById("prospectSearch")?.value || "")
 .toLowerCase();
 
-let filtered =
-prospects.filter(p => {
+let industry =
+document.getElementById("industryFilter")?.value || "";
+
+let scoreFilter =
+document.getElementById("scoreFilter")?.value || "";
+
+
+let filtered = prospects.filter(p => {
 
 let text =
-(p.company + " " +
-p.contact + " " +
-p.industry).toLowerCase();
+(
+p.company + " " +
+(p.contacts || []).map(c => c.name + " " + c.email + " " + c.phone).join(" ") +
+p.industry + " " +
+p.location
+).toLowerCase();
 
-return text.includes(search);
+if(!text.includes(search))
+return false;
+
+if(industry && p.industry !== industry)
+return false;
+
+let score = getScore(p);
+
+if(scoreFilter === "high" && score < 75)
+return false;
+
+if(scoreFilter === "medium" && (score < 50 || score >= 75))
+return false;
+
+if(scoreFilter === "low" && score >= 50)
+return false;
+
+return true;
 
 });
 
@@ -893,7 +1521,7 @@ return text.includes(search);
 if(filtered.length === 0) {
 
 table.innerHTML =
-'<tr><td colspan="7" class="empty">No prospects yet. Add your first account.</td></tr>';
+'<tr><td colspan="7" class="empty">No prospects found.</td></tr>';
 
 return;
 
@@ -903,16 +1531,15 @@ return;
 table.innerHTML =
 filtered.map(p => {
 
-let lastFollowup =
-p.followups.length
-? p.followups[p.followups.length - 1].date
-: "—";
+let primary =
+(p.contacts || [])[0];
 
 return `
 
 <tr>
 
 <td>
+
 <span
 class="company-link"
 onclick="showAccount(${p.id})">
@@ -920,19 +1547,32 @@ onclick="showAccount(${p.id})">
 ${escapeHTML(p.company)}
 
 </span>
+
 </td>
 
-<td>${escapeHTML(p.contact || "—")}</td>
+<td>
+${escapeHTML(primary?.name || "No contact")}
+</td>
 
-<td>${escapeHTML(p.industry)}</td>
+<td>
+${escapeHTML(p.industry)}
+</td>
 
-<td>${p.positions}</td>
+<td>
+${p.positions}
+</td>
 
-<td>${p.days} days</td>
+<td>
+${p.days} days
+</td>
 
-<td>${getBadge(getScore(p))}</td>
+<td>
+${getBadge(getScore(p))}
+</td>
 
-<td>${lastFollowup}</td>
+<td>
+${escapeHTML(p.nextAction?.title || "Make first call")}
+</td>
 
 </tr>
 
@@ -943,9 +1583,9 @@ ${escapeHTML(p.company)}
 }
 
 
-/* ==============================
-   ACCOUNT PAGE
-============================== */
+/* =========================================================
+   29. ACCOUNT PAGE
+========================================================= */
 
 function renderAccount() {
 
@@ -954,8 +1594,41 @@ prospects.find(x => x.id === currentAccountId);
 
 if(!p) return;
 
+
+/*
+   This keeps older records from breaking
+   if they don't have the new fields.
+*/
+
+if(!p.contacts)
+p.contacts = [];
+
+if(!p.calls)
+p.calls = [];
+
+if(!p.followups)
+p.followups = [];
+
+if(!p.nextAction) {
+
+p.nextAction = {
+
+title:"Make discovery call",
+
+reason:"New opportunity",
+
+focus:"Ask about current hiring needs.",
+
+date:""
+
+};
+
+}
+
+
 let content =
 document.getElementById("accountContent");
+
 
 content.innerHTML = `
 
@@ -968,11 +1641,15 @@ ${escapeHTML(p.company)}
 </div>
 
 <div class="account-meta">
-${escapeHTML(p.industry)} •
+
+${escapeHTML(p.industry)}
+•
 ${escapeHTML(p.location || "Location not entered")}
+
 </div>
 
 </div>
+
 
 <div class="account-actions">
 
@@ -982,7 +1659,12 @@ onclick="startCall()">
 </button>
 
 <button class="btn btn-light"
-onclick="generateEmail()">
+onclick="openEditProspect()">
+✏️ Edit Business
+</button>
+
+<button class="btn btn-light"
+onclick="openEmailCenter()">
 ✉️ Email
 </button>
 
@@ -991,63 +1673,236 @@ onclick="generateEmail()">
 </div>
 
 
+<!-- NEXT BEST ACTION -->
+
+<div class="next-action">
+
+<h2>🎯 NEXT BEST ACTION</h2>
+
+<div class="next-action-title">
+${escapeHTML(p.nextAction.title)}
+</div>
+
+<p>
+<strong>Why:</strong>
+${escapeHTML(p.nextAction.reason)}
+</p>
+
+<p>
+<strong>Focus:</strong>
+${escapeHTML(p.nextAction.focus)}
+</p>
+
+${
+p.nextAction.date
+?
+`<p><strong>Follow-Up:</strong> ${escapeHTML(p.nextAction.date)}</p>`
+:
+""
+}
+
+<button
+class="btn btn-light"
+onclick="editNextAction()">
+
+✏️ Edit Next Action
+
+</button>
+
+</div>
+
+
+<!-- VALUE VAULT -->
+
 <div class="value-vault">
 
-<h2>💼 Value Vault</h2>
+<h2>💼 Account Intelligence</h2>
 
 <div class="vault-grid">
 
 <div class="vault-item">
+
 <small>Open Positions</small>
+
 <strong>${p.positions}</strong>
+
 </div>
 
+
 <div class="vault-item">
+
 <small>Oldest Opening</small>
+
 <strong>${p.days} days</strong>
+
 </div>
+
 
 <div class="vault-item">
+
 <small>Opportunity Score</small>
+
 <strong>${getScore(p)}%</strong>
+
+</div>
+
+
+<div class="vault-item">
+
+<small>Calls</small>
+
+<strong>${p.calls.length}</strong>
+
 </div>
 
 </div>
+
 
 <br>
 
 <strong>Hiring Signal:</strong>
 ${escapeHTML(p.signal)}
 
+
 <br><br>
 
 <strong>Account Intelligence:</strong>
 
 <p>
-${escapeHTML(p.notes || "No account intelligence entered yet.")}
+${escapeHTML(
+p.notes ||
+"No account intelligence entered yet."
+)}
 </p>
 
 </div>
 
+
+<!-- CONTACTS -->
 
 <div class="panel">
 
-<h2>👤 Primary Contact</h2>
+<div class="page-header">
+
+<div>
+
+<h2>👥 Contacts</h2>
 
 <p>
-<strong>${escapeHTML(p.contact || "No contact entered")}</strong>
-${p.title ? " — " + escapeHTML(p.title) : ""}
+Manage everyone involved in the staffing decision.
 </p>
-
-<p>📞 ${escapeHTML(p.phone || "No phone entered")}</p>
-
-<p>✉️ ${escapeHTML(p.email || "No email entered")}</p>
 
 </div>
 
 
+<button
+class="btn btn-primary"
+onclick="openContactModal()">
+
++ Add Contact
+
+</button>
+
+</div>
+
+
+<div class="contact-grid">
+
+${
+p.contacts.length
+?
+p.contacts.map((c,index) => `
+
+<div class="contact-card ${index === 0 ? "primary-contact" : ""}">
+
+<div class="contact-name">
+${escapeHTML(c.name || "Unnamed Contact")}
+</div>
+
+<div class="contact-title">
+${escapeHTML(c.title || "Title not entered")}
+</div>
+
+<div>
+📞 ${escapeHTML(c.phone || "No phone")}
+</div>
+
+<div>
+✉️ ${escapeHTML(c.email || "No email")}
+</div>
+
+
+<div class="contact-actions">
+
+<button
+class="btn btn-light btn-small"
+onclick="editContact(${c.id})">
+
+✏️ Edit
+
+</button>
+
+
+<button
+class="btn btn-light btn-small"
+onclick="startCallForContact(${c.id})">
+
+📞 Call
+
+</button>
+
+
+<button
+class="btn btn-light btn-small"
+onclick="openEmailCenter(${c.id})">
+
+✉️ Email
+
+</button>
+
+
+${
+index !== 0
+?
+`<button
+class="btn btn-light btn-small"
+onclick="makePrimaryContact(${c.id})">
+
+Make Primary
+
+</button>`
+:
+`<span class="badge badge-high">PRIMARY</span>`
+}
+
+<button
+class="btn btn-danger btn-small"
+onclick="deleteContact(${c.id})">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+:
+'<div class="empty">No contacts added yet.</div>'
+}
+
+</div>
+
+</div>
+
+
+<!-- CALL WORKSPACE -->
+
 <div id="callWorkspace"></div>
 
+
+<!-- HISTORY -->
 
 <div class="panel">
 
@@ -1063,72 +1918,428 @@ ${renderHistory(p)}
 
 `;
 
-}
 
-
-function renderHistory(p) {
-
-let items = [];
-
-p.calls.forEach(c => {
-
-items.push({
-
-date:c.date,
-
-type:"📞 Call",
-
-text:c.notes || c.outcome
-
-});
-
-});
-
-p.followups.forEach(f => {
-
-items.push({
-
-date:f.date,
-
-type:"📅 Follow-Up",
-
-text:f.notes
-
-});
-
-});
-
-if(!items.length) {
-
-return '<div class="empty">No activity recorded yet.</div>';
+saveData();
 
 }
 
-return items
-.sort((a,b) =>
-new Date(b.date) - new Date(a.date))
-.map(i => `
 
-<div class="history-item">
+/* =========================================================
+   30. EDIT PROSPECT
+========================================================= */
 
-<strong>${i.type}</strong>
+function openEditProspect() {
 
-<br>
+let p =
+prospects.find(x => x.id === currentAccountId);
 
-<small>${i.date}</small>
+if(!p) return;
 
-<p>${escapeHTML(i.text || "")}</p>
+
+openModal(`
+
+<div class="modal-header">
+
+<h2>Edit Business</h2>
+
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
 
 </div>
 
-`).join("");
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Company Name</label>
+
+<input id="editCompany"
+value="${escapeAttribute(p.company)}">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Industry</label>
+
+<select id="editIndustry">
+
+${[
+"Construction",
+"Warehouse",
+"Manufacturing",
+"Logistics",
+"Healthcare",
+"Hospitality",
+"Retail",
+"Other"
+].map(i =>
+`<option ${p.industry === i ? "selected" : ""}>${i}</option>`
+).join("")}
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Location</label>
+
+<input
+id="editLocation"
+value="${escapeAttribute(p.location)}"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Open Positions</label>
+
+<input
+id="editPositions"
+type="number"
+value="${p.positions || 0}"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Oldest Position — Days</label>
+
+<input
+id="editDays"
+type="number"
+value="${p.days || 0}"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Hiring Signal</label>
+
+<select id="editSignal">
+
+${[
+"Multiple Openings",
+"Hard-to-Fill Position",
+"Expansion",
+"High Turnover",
+"Urgent Hiring",
+"Unknown"
+].map(i =>
+`<option ${p.signal === i ? "selected" : ""}>${i}</option>`
+).join("")}
+
+</select>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>Account Intelligence</label>
+
+<textarea id="editNotes">${escapeHTML(p.notes)}</textarea>
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn btn-primary"
+onclick="saveEditedProspect()">
+
+Save Business
+
+</button>
+
+`);
 
 }
 
 
-/* ==============================
-   CALL WORKSPACE
-============================== */
+function saveEditedProspect() {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+p.company =
+document.getElementById("editCompany").value.trim();
+
+p.industry =
+document.getElementById("editIndustry").value;
+
+p.location =
+document.getElementById("editLocation").value;
+
+p.positions =
+parseInt(document.getElementById("editPositions").value) || 0;
+
+p.days =
+parseInt(document.getElementById("editDays").value) || 0;
+
+p.signal =
+document.getElementById("editSignal").value;
+
+p.notes =
+document.getElementById("editNotes").value;
+
+
+saveData();
+
+closeModal();
+
+renderAccount();
+
+}
+
+
+/* =========================================================
+   31. CONTACTS
+========================================================= */
+
+function openContactModal(contactId = null) {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+let contact =
+p.contacts.find(c => c.id === contactId);
+
+
+openModal(`
+
+<div class="modal-header">
+
+<h2>${contact ? "Edit Contact" : "Add Contact"}</h2>
+
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
+
+</div>
+
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Contact Name</label>
+
+<input
+id="contactName"
+value="${escapeAttribute(contact?.name || "")}"
+placeholder="Jane Smith"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Title</label>
+
+<input
+id="contactTitle"
+value="${escapeAttribute(contact?.title || "")}"
+placeholder="HR Director"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Phone</label>
+
+<input
+id="contactPhone"
+value="${escapeAttribute(contact?.phone || "")}"
+placeholder="(404) 555-1234"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Email</label>
+
+<input
+id="contactEmail"
+value="${escapeAttribute(contact?.email || "")}"
+placeholder="jane@company.com"
+>
+
+</div>
+
+</div>
+
+
+<br>
+
+<button
+class="btn btn-primary"
+onclick="saveContact(${contactId || "null"})">
+
+${contact ? "Save Contact" : "Add Contact"}
+
+</button>
+
+`);
+
+}
+
+
+function saveContact(contactId) {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+let name =
+document.getElementById("contactName").value.trim();
+
+
+if(!name) {
+
+alert("Contact name is required.");
+
+return;
+
+}
+
+
+let contact = {
+
+id: contactId || Date.now(),
+
+name:name,
+
+title:
+document.getElementById("contactTitle").value,
+
+phone:
+document.getElementById("contactPhone").value,
+
+email:
+document.getElementById("contactEmail").value
+
+};
+
+
+if(contactId) {
+
+let index =
+p.contacts.findIndex(c => c.id === contactId);
+
+if(index !== -1)
+p.contacts[index] = contact;
+
+} else {
+
+p.contacts.push(contact);
+
+}
+
+
+saveData();
+
+closeModal();
+
+renderAccount();
+
+}
+
+
+function editContact(id) {
+
+openContactModal(id);
+
+}
+
+
+function deleteContact(id) {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+if(!confirm("Delete this contact?"))
+return;
+
+
+p.contacts =
+p.contacts.filter(c => c.id !== id);
+
+saveData();
+
+renderAccount();
+
+}
+
+
+function makePrimaryContact(id) {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+let index =
+p.contacts.findIndex(c => c.id === id);
+
+if(index === -1) return;
+
+
+let contact =
+p.contacts.splice(index,1)[0];
+
+p.contacts.unshift(contact);
+
+saveData();
+
+renderAccount();
+
+}
+
+
+function startCallForContact(id) {
+
+startCall();
+
+}
+
+
+/* =========================================================
+   32. CALL WORKSPACE
+========================================================= */
 
 function startCall() {
 
@@ -1140,6 +2351,7 @@ workspace.innerHTML = `
 <div class="panel call-workspace">
 
 <h2>📞 Live Call Workspace</h2>
+
 
 <div class="call-status">
 
@@ -1173,7 +2385,7 @@ Not Interested
 
 <div class="prompt-box">
 
-<h3>🎯 Discovery Prompt</h3>
+<h3>🎯 Discovery Questions</h3>
 
 <p>
 "What positions are proving the most difficult for your team to fill right now?"
@@ -1187,6 +2399,10 @@ Not Interested
 "What happens operationally when those roles remain unfilled?"
 </p>
 
+<p>
+"How are you currently handling those openings?"
+</p>
+
 </div>
 
 
@@ -1194,37 +2410,21 @@ Not Interested
 
 <h3>💬 Live Objections</h3>
 
-<div class="objection-buttons">
+<p>
+Click an objection to immediately see your responses.
+</p>
 
-<button class="btn btn-light"
-onclick="showObjection('already')">
-Already Have Staffing Company
-</button>
 
-<button class="btn btn-light"
-onclick="showObjection('busy')">
-Too Busy
-</button>
+<div class="objection-categories">
 
-<button class="btn btn-light"
-onclick="showObjection('budget')">
-No Budget
-</button>
-
-<button class="btn btn-light"
-onclick="showObjection('send')">
-Send Information
-</button>
-
-<button class="btn btn-light"
-onclick="showObjection('notinterested')">
-Not Interested
-</button>
+${renderObjectionButtons()}
 
 </div>
 
+
 <div id="objectionResponse"
-class="objection-response"></div>
+class="objection-response">
+</div>
 
 </div>
 
@@ -1233,12 +2433,16 @@ class="objection-response"></div>
 
 <label>Call Notes</label>
 
-<textarea id="callNotes"
-placeholder="Capture what the prospect said, pain points, objections, hiring needs, decision process, etc."></textarea>
+<textarea
+id="callNotes"
+placeholder="Capture what the prospect said, pain points, objections, hiring needs and decision process..."
+></textarea>
 
 </div>
 
+
 <br>
+
 
 <div class="form-group">
 
@@ -1257,22 +2461,36 @@ placeholder="Capture what the prospect said, pain points, objections, hiring nee
 
 </div>
 
+
 <br>
 
-<button class="btn btn-primary"
+
+<button
+class="btn btn-primary"
 onclick="saveCall()">
+
 Save Call
+
 </button>
 
-<button class="btn btn-light"
+
+<button
+class="btn btn-light"
 onclick="createFollowup()">
+
 📅 Create Follow-Up
+
 </button>
 
-<button class="btn btn-dark"
+
+<button
+class="btn btn-dark"
 onclick="analyzeCall()">
+
 🤖 Analyze Call
+
 </button>
+
 
 <div id="aiCallResult"></div>
 
@@ -1283,79 +2501,330 @@ onclick="analyzeCall()">
 }
 
 
-/* ==============================
-   OBJECTIONS
-============================== */
+function renderObjectionButtons() {
 
-const objections = {
-
-already: [
-
-"I completely understand. A lot of companies already have a staffing partner. Where I usually find an opportunity is when there are positions that aren't getting filled quickly enough. Are there any roles your current provider is struggling with?",
-
-"That makes sense. I'm not looking to replace a relationship that's working. I'm curious—are you completely covered on your harder-to-fill positions right now?",
-
-"Understood. If your current provider could handle every opening and every shift you needed, what would you say is the biggest challenge you're still dealing with?"
-
-],
-
-busy: [
-
-"I understand. Let me make this quick. What is the hardest position you're trying to fill right now?",
-
-"I'll keep it brief. If I could identify one staffing gap that we're equipped to solve, would it be worth a two-minute conversation?",
-
-"No problem. Would it make more sense for me to call you later today, or is there a better day for a quick conversation?"
-
-],
-
-budget: [
-
-"I understand. Is the issue that there is no staffing budget available, or that the current hiring need hasn't justified bringing in another resource?",
-
-"That makes sense. If an open position is sitting unfilled, how are you currently absorbing the cost of that vacancy?",
-
-"I completely understand. If we could solve a difficult-to-fill position without creating unnecessary cost, would you be open to evaluating it?"
-
-],
-
-send: [
-
-"Absolutely. I'll send something over. So I make it relevant, what type of positions are you hiring for most frequently?",
-
-"Happy to. Before I send it, what would you want the information to help you evaluate?",
-
-"Absolutely. I'll send that over. When would be a good time for me to follow up after you've had a chance to review it?"
-
-],
-
-notinterested: [
-
-"I understand. Before I let you go, may I ask what would need to change for staffing support to become worth considering?",
-
-"Fair enough. Is that because you're fully staffed right now, or because you're satisfied with your current recruiting process?",
-
-"Understood. Would it be alright if I asked one quick question so I don't follow up unnecessarily?"
-]
-
-};
+let html = "";
 
 
-function showObjection(type) {
+for(let category in objectionLibrary) {
+
+html += `
+
+<div class="objection-category">
+
+<h4>${escapeHTML(category)}</h4>
+
+<div class="objection-buttons">
+
+${
+objectionLibrary[category].map(o => `
+
+<button
+class="btn btn-light btn-small"
+onclick="showObjectionById('${o.id}')">
+
+${escapeHTML(o.name)}
+
+</button>
+
+`).join("")
+}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+/*
+   CUSTOM OBJECTIONS
+*/
+
+html += `
+
+<div class="objection-category">
+
+<h4>⭐ My Custom Objections</h4>
+
+<div class="objection-buttons">
+
+${
+customObjections.length
+?
+customObjections.map(o => `
+
+<button
+class="btn btn-light btn-small"
+onclick="showCustomObjection(${o.id})">
+
+${escapeHTML(o.name)}
+
+</button>
+
+`).join("")
+:
+"<span style='color:#6b7280;font-size:13px;'>No custom objections yet.</span>"
+}
+
+<button
+class="btn btn-primary btn-small"
+onclick="openCustomObjectionModal()">
+
++ Add Custom Objection
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+
+return html;
+
+}
+
+
+/* =========================================================
+   33. SHOW OBJECTION
+========================================================= */
+
+function showObjectionById(id) {
+
+let objection = null;
+
+
+for(let category in objectionLibrary) {
+
+let found =
+objectionLibrary[category].find(o => o.id === id);
+
+if(found) {
+
+objection = found;
+
+break;
+
+}
+
+}
+
+
+if(!objection) return;
+
 
 let box =
 document.getElementById("objectionResponse");
 
-let responses =
-objections[type];
 
 box.style.display = "block";
 
+
 box.innerHTML = `
 
-<strong>Choose your response:</strong>
+<strong>
+${escapeHTML(objection.name)}
+</strong>
 
-${responses.map((r,i) => `
+<p>
+Choose the response that fits the conversation.
+</p>
+
+${
+objection.responses.map((r,i) => `
+
+<div class="response-option">
+
+<strong>Response ${i + 1}</strong>
+
+<p>${escapeHTML(r)}</p>
+
+</div>
+
+`).join("")
+}
+
+`;
+
+}
+
+
+/* =========================================================
+   34. CUSTOM OBJECTIONS
+========================================================= */
+
+function openCustomObjectionModal() {
+
+openModal(`
+
+<div class="modal-header">
+
+<h2>⭐ Add Custom Objection</h2>
+
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
+
+</div>
+
+
+<p style="color:#6b7280;">
+Add an objection you hear during real sales calls.
+It will appear on every call.
+</p>
+
+
+<div class="form-group">
+
+<label>Objection</label>
+
+<input
+id="customObjectionName"
+placeholder="Example: We only use local staffing companies."
+>
+
+</div>
+
+
+<br>
+
+
+<div class="form-group">
+
+<label>Your Response</label>
+
+<textarea
+id="customObjectionResponse"
+placeholder="Write your response here, or use Generate Response."
+></textarea>
+
+</div>
+
+
+<br>
+
+
+<button
+class="btn btn-dark"
+onclick="generateCustomResponse()">
+
+🤖 Generate Response
+
+</button>
+
+
+<button
+class="btn btn-primary"
+onclick="saveCustomObjection()">
+
+Save Objection
+
+</button>
+
+`);
+
+}
+
+
+function generateCustomResponse() {
+
+let objection =
+document.getElementById("customObjectionName").value.trim();
+
+
+if(!objection) {
+
+alert("Enter the objection first.");
+
+return;
+
+}
+
+
+let response =
+document.getElementById("customObjectionResponse");
+
+
+response.value =
+
+`I completely understand. Many businesses have a similar approach. Just so I can understand your current process, what usually happens when you have a position that becomes difficult or urgent to fill?
+
+If your internal process couldn't fill that position quickly enough, would you be open to having another staffing resource available as a backup?`;
+
+}
+
+
+function saveCustomObjection() {
+
+let name =
+document.getElementById("customObjectionName").value.trim();
+
+let response =
+document.getElementById("customObjectionResponse").value.trim();
+
+
+if(!name || !response) {
+
+alert("Enter both the objection and response.");
+
+return;
+
+}
+
+
+customObjections.push({
+
+id:Date.now(),
+
+name:name,
+
+responses:[response]
+
+});
+
+
+saveData();
+
+closeModal();
+
+
+/*
+   Refresh the call workspace if it is open.
+*/
+
+if(document.getElementById("callWorkspace"))
+startCall();
+
+}
+
+
+function showCustomObjection(id) {
+
+let objection =
+customObjections.find(o => o.id === id);
+
+if(!objection) return;
+
+
+let box =
+document.getElementById("objectionResponse");
+
+
+box.style.display = "block";
+
+
+box.innerHTML = `
+
+<strong>
+${escapeHTML(objection.name)}
+</strong>
+
+${objection.responses.map((r,i) => `
 
 <div class="response-option">
 
@@ -1367,16 +2836,110 @@ ${responses.map((r,i) => `
 
 `).join("")}
 
+
+<br>
+
+<button
+class="btn btn-light btn-small"
+onclick="addAnotherResponse(${id})">
+
++ Add Another Response
+
+</button>
+
+<button
+class="btn btn-light btn-small"
+onclick="editCustomObjection(${id})">
+
+✏️ Edit
+
+</button>
+
+<button
+class="btn btn-danger btn-small"
+onclick="deleteCustomObjection(${id})">
+
+Delete
+
+</button>
+
 `;
 
 }
 
 
-/* ==============================
-   CALL OUTCOME
-============================== */
+function addAnotherResponse(id) {
 
-let selectedOutcome = "Connected";
+let objection =
+customObjections.find(o => o.id === id);
+
+if(!objection) return;
+
+
+let response =
+prompt("Enter another response to this same objection:");
+
+
+if(!response) return;
+
+
+objection.responses.push(response);
+
+saveData();
+
+showCustomObjection(id);
+
+}
+
+
+function editCustomObjection(id) {
+
+let objection =
+customObjections.find(o => o.id === id);
+
+if(!objection) return;
+
+
+let name =
+prompt("Edit objection:", objection.name);
+
+if(name === null) return;
+
+
+let response =
+prompt("Edit primary response:", objection.responses[0] || "");
+
+
+objection.name = name;
+objection.responses[0] = response || objection.responses[0];
+
+
+saveData();
+
+startCall();
+
+}
+
+
+function deleteCustomObjection(id) {
+
+if(!confirm("Delete this custom objection?"))
+return;
+
+
+customObjections =
+customObjections.filter(o => o.id !== id);
+
+saveData();
+
+startCall();
+
+}
+
+
+/* =========================================================
+   35. CALL OUTCOME
+========================================================= */
 
 function setOutcome(outcome) {
 
@@ -1385,19 +2948,23 @@ selectedOutcome = outcome;
 let select =
 document.getElementById("callOutcome");
 
-if(select) select.value = outcome;
+if(select)
+select.value = outcome;
 
 }
 
 
-/* ==============================
-   SAVE CALL
-============================== */
+/* =========================================================
+   36. SAVE CALL
+========================================================= */
 
 function saveCall() {
 
 let p =
 prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
 
 let notes =
 document.getElementById("callNotes").value;
@@ -1405,7 +2972,10 @@ document.getElementById("callNotes").value;
 let outcome =
 document.getElementById("callOutcome").value;
 
+
 p.calls.push({
+
+id:Date.now(),
 
 date:new Date().toLocaleString(),
 
@@ -1415,39 +2985,134 @@ outcome:outcome
 
 });
 
-saveData();
 
-renderAccount();
+/*
+   Automatically update the next action
+   based on the call result.
+*/
 
-alert("Call logged to the account.");
+if(outcome === "Meeting Booked") {
+
+p.nextAction = {
+
+title:"Prepare for the booked meeting",
+
+reason:"A meeting has been booked.",
+
+focus:"Review the prospect's hiring needs and prepare discovery questions.",
+
+date:""
+
+};
+
+}
+
+else if(outcome === "Follow-Up Needed") {
+
+p.nextAction = {
+
+title:"Schedule the follow-up",
+
+reason:"The prospect requested another touchpoint.",
+
+focus:"Reference something specific from this conversation.",
+
+date:""
+
+};
+
+}
+
+else if(outcome === "Voicemail") {
+
+p.nextAction = {
+
+title:"Try another contact method",
+
+reason:"The call went to voicemail.",
+
+focus:"Call again or use a relevant email template.",
+
+date:""
+
+};
+
+}
+
+else if(outcome === "Not Interested") {
+
+p.nextAction = {
+
+title:"Understand the reason for the objection",
+
+reason:"The prospect is currently not interested.",
+
+focus:"Determine whether the issue is timing, budget, current provider or hiring volume.",
+
+date:""
+
+};
 
 }
 
 
-/* ==============================
-   FOLLOW-UP
-============================== */
+saveData();
+
+renderAccount();
+
+alert("Call logged.");
+
+}
+
+
+/* =========================================================
+   37. FOLLOW-UP
+========================================================= */
 
 function createFollowup() {
 
 let p =
 prospects.find(x => x.id === currentAccountId);
 
+if(!p) return;
+
+
 let date =
 prompt("Enter follow-up date (example: 2026-08-20):");
 
-if(!date) return;
+
+if(!date)
+return;
+
 
 let notes =
 prompt("What should happen on this follow-up?");
 
+
 p.followups.push({
+
+id:Date.now(),
 
 date:date,
 
-notes:notes || "Follow up with prospect."
+notes:
+notes || "Follow up with prospect."
 
 });
+
+
+p.nextAction = {
+
+title:"Follow up with prospect",
+
+reason:"A follow-up was created.",
+
+focus:notes || "Continue the staffing conversation.",
+
+date:date
+
+};
+
 
 saveData();
 
@@ -1458,9 +3123,203 @@ alert("Follow-up created.");
 }
 
 
-/* ==============================
-   AI-READY CALL ANALYSIS
-============================== */
+/* =========================================================
+   38. NEXT BEST ACTION EDITOR
+========================================================= */
+
+function editNextAction() {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+openModal(`
+
+<div class="modal-header">
+
+<h2>🎯 Edit Next Best Action</h2>
+
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Action</label>
+
+<input
+id="nextActionTitle"
+value="${escapeAttribute(p.nextAction.title)}"
+>
+
+</div>
+
+
+<br>
+
+
+<div class="form-group">
+
+<label>Why?</label>
+
+<textarea id="nextActionReason">${escapeHTML(p.nextAction.reason)}</textarea>
+
+</div>
+
+
+<br>
+
+
+<div class="form-group">
+
+<label>Focus</label>
+
+<textarea id="nextActionFocus">${escapeHTML(p.nextAction.focus)}</textarea>
+
+</div>
+
+
+<br>
+
+
+<div class="form-group">
+
+<label>Follow-Up Date</label>
+
+<input
+id="nextActionDate"
+type="date"
+value="${escapeAttribute(p.nextAction.date)}"
+>
+
+</div>
+
+
+<br>
+
+
+<button
+class="btn btn-primary"
+onclick="saveNextAction()">
+
+Save Next Action
+
+</button>
+
+`);
+
+}
+
+
+function saveNextAction() {
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+if(!p) return;
+
+
+p.nextAction = {
+
+title:
+document.getElementById("nextActionTitle").value,
+
+reason:
+document.getElementById("nextActionReason").value,
+
+focus:
+document.getElementById("nextActionFocus").value,
+
+date:
+document.getElementById("nextActionDate").value
+
+};
+
+
+saveData();
+
+closeModal();
+
+renderAccount();
+
+}
+
+
+/* =========================================================
+   39. HISTORY
+========================================================= */
+
+function renderHistory(p) {
+
+let items = [];
+
+
+p.calls.forEach(c => {
+
+items.push({
+
+date:c.date,
+
+type:"📞 Call",
+
+text:c.notes || c.outcome
+
+});
+
+});
+
+
+p.followups.forEach(f => {
+
+items.push({
+
+date:f.date,
+
+type:"📅 Follow-Up",
+
+text:f.notes
+
+});
+
+});
+
+
+if(!items.length) {
+
+return '<div class="empty">No activity recorded yet.</div>';
+
+}
+
+
+return items
+.map(i => `
+
+<div class="history-item">
+
+<strong>${i.type}</strong>
+
+<br>
+
+<small>${escapeHTML(i.date)}</small>
+
+<p>${escapeHTML(i.text || "")}</p>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* =========================================================
+   40. CALL ANALYSIS
+========================================================= */
 
 function analyzeCall() {
 
@@ -1470,55 +3329,66 @@ prospects.find(x => x.id === currentAccountId);
 let notes =
 document.getElementById("callNotes")?.value || "";
 
+
 if(!notes) {
 
-alert("Enter your call notes first.");
+alert("Enter call notes first.");
 
 return;
 
 }
 
+
 let result =
 document.getElementById("aiCallResult");
+
 
 result.innerHTML = `
 
 <div class="followup">
 
-<h3>🤖 AI Call Analysis</h3>
-
-<p><strong>Account:</strong> ${escapeHTML(p.company)}</p>
-
-<p><strong>Current signal:</strong>
-${escapeHTML(p.signal)}
-with ${p.positions} open positions and the oldest opening at ${p.days} days.
-</p>
-
-<h4>Recommended Follow-Up Strategy</h4>
+<h3>🤖 Call Analysis</h3>
 
 <p>
-Use the information from this conversation to identify the
-business problem behind the staffing need. Your next
-touchpoint should focus on the prospect's operational impact,
-not simply on selling staffing services.
+
+<strong>Account:</strong>
+${escapeHTML(p.company)}
+
 </p>
 
-<h4>Next Discovery Question</h4>
+
+<p>
+
+<strong>Opportunity:</strong>
+
+${getScore(p)}% based on
+${p.positions} open positions and
+the oldest opening being ${p.days} days.
+
+</p>
+
+
+<h4>Recommended Next Discovery Question</h4>
 
 <p>
 "What's the impact on your team when that position remains open?"
 </p>
 
+
 <h4>Recommended Next Action</h4>
 
 <p>
-Create a specific follow-up date and reference something
-the prospect told you during this call.
+Review the notes you entered and schedule a specific follow-up
+that references something the prospect told you.
 </p>
 
+
 <p>
-<strong>Note:</strong> This is the initial rules-based analysis.
-We will connect the real AI business research engine later.
+
+<strong>Current version:</strong>
+
+Rules-based analysis. We will connect a real AI engine later.
+
 </p>
 
 </div>
@@ -1528,58 +3398,730 @@ We will connect the real AI business research engine later.
 }
 
 
-/* ==============================
-   EMAIL GENERATOR
-============================== */
+/* =========================================================
+   41. EMAIL CENTER
+========================================================= */
 
-function generateEmail() {
+function openEmailCenter(contactId = null) {
 
 let p =
 prospects.find(x => x.id === currentAccountId);
 
-let body =
+if(!p) return;
 
-`Subject: Following up on your staffing needs
 
-Hi ${p.contact || "there"},
+let contact =
+p.contacts.find(c => c.id === contactId)
+||
+p.contacts[0]
+||
+null;
 
-I wanted to follow up regarding your current hiring needs at ${p.company}.
 
-I noticed you currently have ${p.positions} open position(s), including positions that have been open for approximately ${p.days} days.
+openModal(`
 
-I'd be happy to learn more about the roles you're having the most difficulty filling and see whether our staffing resources could help.
+<div class="modal-header">
 
-Would you be open to a quick conversation?
+<h2>✉️ Email Center</h2>
 
-Best,
-Asia`;
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
 
-alert(body);
+</div>
+
+
+<div class="form-group">
+
+<label>Contact</label>
+
+<select id="emailContact">
+
+<option value="">
+Choose a contact
+</option>
+
+${p.contacts.map(c => `
+
+<option
+value="${c.id}"
+${contact && contact.id === c.id ? "selected" : ""}>
+
+${escapeHTML(c.name)}
+ — ${escapeHTML(c.email || "No email")}
+
+</option>
+
+`).join("")}
+
+</select>
+
+</div>
+
+
+<br>
+
+
+<div class="form-group">
+
+<label>Subject</label>
+
+<input
+id="emailSubject"
+placeholder="Staffing support for ${escapeAttribute(p.company)}"
+>
+
+</div>
+
+
+<br>
+
+
+<div class="form-group">
+
+<label>Email Body</label>
+
+<textarea
+id="emailBody"
+style="min-height:220px;"
+placeholder="Write your email..."
+></textarea>
+
+</div>
+
+
+<br>
+
+
+<button
+class="btn btn-light"
+onclick="insertEmailTemplate()">
+
+Use Template
+
+</button>
+
+
+<button
+class="btn btn-primary"
+onclick="saveEmailDraft()">
+
+Save Draft
+
+</button>
+
+
+<button
+class="btn btn-dark"
+onclick="showEmailTemplates()">
+
+Manage Templates
+
+</button>
+
+`);
 
 }
 
 
-/* ==============================
-   KPIs
-============================== */
+function insertEmailTemplate() {
+
+if(!emailTemplates.length) {
+
+alert("You don't have any templates yet. Create one first.");
+
+return;
+
+}
+
+
+let names =
+emailTemplates
+.map((t,i) => `${i + 1}. ${t.name}`)
+.join("\n");
+
+
+let choice =
+prompt("Choose a template by number:\n\n" + names);
+
+
+let index =
+parseInt(choice) - 1;
+
+
+if(isNaN(index) || !emailTemplates[index])
+return;
+
+
+let p =
+prospects.find(x => x.id === currentAccountId);
+
+
+let template =
+emailTemplates[index];
+
+
+document.getElementById("emailSubject").value =
+replaceTemplateVariables(template.subject,p);
+
+
+document.getElementById("emailBody").value =
+replaceTemplateVariables(template.body,p);
+
+}
+
+
+function replaceTemplateVariables(text,p) {
+
+let contact =
+p.contacts[0] || {};
+
+
+return String(text || "")
+
+.replaceAll("{{company}}",p.company || "")
+
+.replaceAll("{{contact}}",contact.name || "there")
+
+.replaceAll("{{positions}}",p.positions || "open")
+
+.replaceAll("{{days}}",p.days || "several")
+
+.replaceAll("{{industry}}",p.industry || "");
+
+}
+
+
+function saveEmailDraft() {
+
+alert(
+"Email draft saved for this conversation. Actual email sending will be connected later."
+);
+
+}
+
+
+/* =========================================================
+   42. EMAIL TEMPLATES
+========================================================= */
+
+function showEmailTemplates() {
+
+openModal(`
+
+<div class="modal-header">
+
+<h2>✉️ Email Templates</h2>
+
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
+
+</div>
+
+
+<p style="color:#6b7280;">
+
+Create reusable staffing sales emails.
+
+</p>
+
+
+<button
+class="btn btn-primary"
+onclick="createEmailTemplate()">
+
++ Create Template
+
+</button>
+
+
+<br><br>
+
+
+<div>
+
+${
+emailTemplates.length
+?
+emailTemplates.map(t => `
+
+<div class="template-card">
+
+<strong>
+${escapeHTML(t.name)}
+</strong>
+
+<p>
+${escapeHTML(t.subject)}
+</p>
+
+
+<div class="template-actions">
+
+<button
+class="btn btn-light btn-small"
+onclick="editEmailTemplate(${t.id})">
+
+Edit
+
+</button>
+
+
+<button
+class="btn btn-danger btn-small"
+onclick="deleteEmailTemplate(${t.id})">
+
+Delete
+
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+:
+'<div class="empty">No email templates yet.</div>'
+}
+
+</div>
+
+`);
+
+}
+
+
+function createEmailTemplate() {
+
+let name =
+prompt("Template name:");
+
+if(!name) return;
+
+
+let subject =
+prompt(
+"Subject:\nUse {{company}}, {{contact}}, {{positions}}, {{days}} or {{industry}}"
+);
+
+if(subject === null) return;
+
+
+let body =
+prompt(
+"Email body:\nUse {{company}}, {{contact}}, {{positions}}, {{days}} or {{industry}}"
+);
+
+if(body === null) return;
+
+
+emailTemplates.push({
+
+id:Date.now(),
+
+name:name,
+
+subject:subject,
+
+body:body
+
+});
+
+
+saveData();
+
+showEmailTemplates();
+
+}
+
+
+function editEmailTemplate(id) {
+
+let t =
+emailTemplates.find(x => x.id === id);
+
+if(!t) return;
+
+
+let name =
+prompt("Template name:",t.name);
+
+if(name === null) return;
+
+
+let subject =
+prompt("Subject:",t.subject);
+
+if(subject === null) return;
+
+
+let body =
+prompt("Body:",t.body);
+
+if(body === null) return;
+
+
+t.name = name;
+t.subject = subject;
+t.body = body;
+
+
+saveData();
+
+showEmailTemplates();
+
+}
+
+
+function deleteEmailTemplate(id) {
+
+if(!confirm("Delete this email template?"))
+return;
+
+
+emailTemplates =
+emailTemplates.filter(t => t.id !== id);
+
+saveData();
+
+showEmailTemplates();
+
+}
+
+
+/* =========================================================
+   43. IMPORT
+========================================================= */
+
+function openImportModal() {
+
+openModal(`
+
+<div class="modal-header">
+
+<h2>📥 Import Prospects</h2>
+
+<button class="btn btn-light"
+onclick="closeModal()">
+✕
+</button>
+
+</div>
+
+
+<p>
+
+You can import a CSV file exported from Excel.
+
+</p>
+
+
+<p style="font-size:13px;color:#6b7280;">
+
+Recommended columns:
+
+company, industry, location, positions, days, signal, notes, contact, title, phone, email
+
+</p>
+
+
+<input
+type="file"
+id="csvFile"
+accept=".csv"
+>
+
+
+<br><br>
+
+
+<button
+class="btn btn-primary"
+onclick="importCSV()">
+
+Import CSV
+
+</button>
+
+`);
+
+}
+
+
+function importCSV() {
+
+let file =
+document.getElementById("csvFile").files[0];
+
+
+if(!file) {
+
+alert("Choose a CSV file first.");
+
+return;
+
+}
+
+
+let reader = new FileReader();
+
+
+reader.onload = function(event) {
+
+let text =
+event.target.result;
+
+
+let rows =
+parseCSV(text);
+
+
+if(rows.length < 2) {
+
+alert("The CSV appears to be empty.");
+
+return;
+
+}
+
+
+let headers =
+rows[0].map(h =>
+h.trim().toLowerCase()
+);
+
+
+for(let i = 1; i < rows.length; i++) {
+
+let row = rows[i];
+
+if(!row.length)
+continue;
+
+
+let data = {};
+
+headers.forEach((h,index) => {
+
+data[h] = row[index] || "";
+
+});
+
+
+let prospect = {
+
+id:Date.now() + i,
+
+company:data.company || "Imported Company",
+
+industry:data.industry || "Other",
+
+location:data.location || "",
+
+positions:parseInt(data.positions) || 0,
+
+days:parseInt(data.days) || 0,
+
+signal:data.signal || "Unknown",
+
+notes:data.notes || "",
+
+contacts:[],
+
+calls:[],
+
+followups:[],
+
+nextAction:{
+
+title:"Review imported prospect",
+
+reason:"This prospect was imported.",
+
+focus:"Research the business and identify the strongest staffing opportunity.",
+
+date:""
+
+}
+
+};
+
+
+if(data.contact || data.email || data.phone) {
+
+prospect.contacts.push({
+
+id:Date.now() + i + 1000,
+
+name:data.contact || "",
+
+title:data.title || "",
+
+phone:data.phone || "",
+
+email:data.email || ""
+
+});
+
+}
+
+
+prospects.push(prospect);
+
+}
+
+
+saveData();
+
+closeModal();
+
+renderProspects();
+
+updateKPIs();
+
+
+alert("Prospects imported successfully.");
+
+};
+
+
+reader.readAsText(file);
+
+}
+
+
+/*
+   Simple CSV parser.
+   This allows commas inside quoted cells.
+*/
+
+function parseCSV(text) {
+
+let rows = [];
+
+let row = [];
+
+let value = "";
+
+let insideQuotes = false;
+
+
+for(let i = 0; i < text.length; i++) {
+
+let char = text[i];
+
+let next = text[i + 1];
+
+
+if(char === '"' && insideQuotes && next === '"') {
+
+value += '"';
+
+i++;
+
+continue;
+
+}
+
+
+if(char === '"') {
+
+insideQuotes = !insideQuotes;
+
+continue;
+
+}
+
+
+if(char === "," && !insideQuotes) {
+
+row.push(value);
+
+value = "";
+
+continue;
+
+}
+
+
+if((char === "\n" || char === "\r") && !insideQuotes) {
+
+if(char === "\r" && next === "\n")
+i++;
+
+
+row.push(value);
+
+rows.push(row);
+
+row = [];
+
+value = "";
+
+continue;
+
+}
+
+
+value += char;
+
+}
+
+
+if(value !== "" || row.length) {
+
+row.push(value);
+
+rows.push(row);
+
+}
+
+
+return rows;
+
+}
+
+
+/* =========================================================
+   44. DASHBOARD KPIs
+========================================================= */
 
 function updateKPIs() {
 
 let calls = 0;
+let connected = 0;
 let followups = 0;
 let meetings = 0;
+let high = 0;
+
 
 prospects.forEach(p => {
 
-calls += p.calls.length;
+calls += p.calls?.length || 0;
 
-followups += p.followups.length;
+followups += p.followups?.length || 0;
 
 meetings +=
-p.calls.filter(c =>
-c.outcome === "Meeting Booked").length;
+(p.calls || [])
+.filter(c => c.outcome === "Meeting Booked")
+.length;
+
+
+connected +=
+(p.calls || [])
+.filter(c => c.outcome === "Connected" ||
+c.outcome === "Meeting Booked")
+.length;
+
+
+if(getScore(p) >= 75)
+high++;
 
 });
+
 
 document.getElementById("kpiProspects").innerText =
 prospects.length;
@@ -1587,39 +4129,87 @@ prospects.length;
 document.getElementById("kpiCalls").innerText =
 calls;
 
-document.getElementById("kpiFollowups").innerText =
-followups;
+document.getElementById("kpiConnected").innerText =
+connected;
 
 document.getElementById("kpiMeetings").innerText =
 meetings;
 
+document.getElementById("kpiFollowups").innerText =
+followups;
+
+document.getElementById("kpiHigh").innerText =
+high;
+
 }
 
 
-/* ==============================
-   SECURITY HELPER
-============================== */
+/* =========================================================
+   45. MODALS
+========================================================= */
+
+function openModal(content) {
+
+document.getElementById("modalContent").innerHTML =
+content;
+
+document.getElementById("modalOverlay").style.display =
+"flex";
+
+}
+
+
+function closeModal(event) {
+
+if(event && event.target !== event.currentTarget)
+return;
+
+
+document.getElementById("modalOverlay").style.display =
+"none";
+
+}
+
+
+/* =========================================================
+   46. SECURITY / DISPLAY HELPERS
+========================================================= */
 
 function escapeHTML(value) {
 
 return String(value || "")
+
 .replace(/&/g,"&amp;")
+
 .replace(/</g,"&lt;")
+
 .replace(/>/g,"&gt;")
+
 .replace(/"/g,"&quot;")
+
 .replace(/'/g,"&#039;");
 
 }
 
 
-/* ==============================
-   INITIALIZE
-============================== */
+function escapeAttribute(value) {
+
+return escapeHTML(value);
+
+}
+
+
+/* =========================================================
+   47. INITIALIZE APPLICATION
+========================================================= */
 
 renderProspects();
+
 updateKPIs();
 
 </script>
+
+</div>
 
 </body>
 </html>
